@@ -35,7 +35,7 @@ class Solution(object):
                     frontmax=abs(frontp,h)*height[h]
                     frontstopsign=True
                 
-                if height[behindp]>=h and not behindstopsign:
+                if height[behindp]>=height[h] and not behindstopsign:
                     behindmax=abs(behindp,h)*height[h]
                     behindstopsign=True
                 
