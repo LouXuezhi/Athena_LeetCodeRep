@@ -1,0 +1,55 @@
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        
+        totalmax=0
+        length = len(height)
+        def abs(a,b):
+            if a-b<0:
+                return b-a
+            else:
+                return a-b
+            
+
+        for h in range(length):
+            frontstopsign=False
+            behindstopsign=False
+            frontmax=0
+            behindmax=0
+            frontp=0
+            behindp=length-1
+
+            while (frontp<h or behindp>h):
+
+
+                if frontp==h:
+                   frontstopsign=True 
+                
+                if behindp==h:
+                    behindstopsign=True
+
+                if height[frontp]>=height[h] and not frontstopsign:
+                    frontmax=abs(frontp,h)*height[h]
+                    frontstopsign=True
+                
+                if height[behindp]>=height[h] and not behindstopsign:
+                    behindmax=abs(behindp,h)*height[h]
+                    behindstopsign=True
+                
+                if frontstopsign and behindstopsign:
+                    break
+
+                if frontp<h :
+                    frontp+=1
+                if behindp>h :
+                    behindp-=1
+
+            if max(frontmax,behindmax)>totalmax:
+                totalmax=max(frontmax,behindmax)
+
+    
+        return totalmax
+
