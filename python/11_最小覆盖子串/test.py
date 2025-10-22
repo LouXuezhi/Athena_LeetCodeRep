@@ -26,6 +26,9 @@ class Solution(object):
         # initializing the right pointer and the left pointer
         
         critip=(0,float("inf"))
+        
+        if len(s)<len(t):
+            return ""
         # when rp do not reach the bounder, the loop will go on
         while (rp<len(s)-1):
              # the first thing to do is to check the status:
@@ -57,7 +60,7 @@ class Solution(object):
                                     critip=(lp,rp)
                          demand[s[rp]]-=1
                      if rp==len(s)-1:
-                         while lp<=rp:
+                         while lp<rp:
                              lp+=1
                              if demand.get(s[lp])!= None:
                                  if demand[s[lp]]==0:
