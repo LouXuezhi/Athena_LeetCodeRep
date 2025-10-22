@@ -19,10 +19,7 @@ class Solution(object):
             demand[t[i]]+=1
 
         for n,c in enumerate(s):
-            if demand.get(c,None)!=None:
-                if demand[c]>0:
-                    demandlen-=1
-                demand[c]-=1
+            
 
             if demandlen==0:
                 while(lp<n):
@@ -32,6 +29,11 @@ class Solution(object):
                             break
                         demand[s[lp]]+=1
                     lp+=1
+                    
+            if demand.get(c,None)!=None:
+                if demand[c]>0:
+                    demandlen-=1
+                demand[c]-=1
 
             if (minpos[1]-minpos[0])>n-lp:
                     minpos=(lp,n)
